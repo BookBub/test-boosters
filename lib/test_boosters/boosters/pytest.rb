@@ -2,7 +2,7 @@ module TestBoosters
   module Boosters
     class Pytest < Base
       def initialize
-        super(file_pattern, exclude_pattern, split_configuration_path, command)
+        super(file_pattern, nil, split_configuration_path, command)
       end
 
       def split_configuration_path
