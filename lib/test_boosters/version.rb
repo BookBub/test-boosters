@@ -1,3 +1,3 @@
 module TestBoosters
-  VERSION = "3.0.0a".freeze
+  VERSION = "2.7.0".freeze
 end
