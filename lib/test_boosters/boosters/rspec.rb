@@ -13,10 +13,6 @@ module TestBoosters
         TestBoosters::ProjectInfo.display_rspec_version
       end
 
-      def after_job
-        TestBoosters::InsightsUploader.upload("rspec", report_path)
-      end
-
       def command
         @command ||= "bundle exec rspec #{rspec_options}"
       end

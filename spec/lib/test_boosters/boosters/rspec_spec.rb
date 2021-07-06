@@ -35,16 +35,6 @@ describe TestBoosters::Boosters::Rspec do
     end
   end
 
-  describe "#after_job" do
-    before { ENV.delete("REPORT_PATH") }
-
-    it" uploads insights" do
-      expect(TestBoosters::InsightsUploader).to receive(:upload).with("rspec", "#{ENV["HOME"]}/rspec_report.json")
-
-      booster.after_job
-    end
-  end
-
   describe "#rspec_options" do
     context "when TB_RSPEC_FORMATTER environment variable is not set" do
       it "returns the SemaphoreFormatter with --format documentation" do

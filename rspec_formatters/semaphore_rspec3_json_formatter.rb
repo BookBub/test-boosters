@@ -30,7 +30,8 @@ class SemaphoreFormatter < RSpec::Core::Formatters::BaseFormatter
       :full_description => example.full_description,
       :status => result.status,
       :file_path => file_path(example),
-      :run_time => result.run_time
+      :run_time => result.run_time,
+      :line_number => line_number(example),
     }
   end
 
@@ -43,6 +44,10 @@ class SemaphoreFormatter < RSpec::Core::Formatters::BaseFormatter
     # file path for both shared examples and regular tests
 
     find_example_group_root_path(example.metadata[:example_group])
+  end
+
+  def line_number(example)
+    example.metadata[:line_number]
   end
 
   def find_example_group_root_path(example_group)

@@ -2,4 +2,4 @@
 
 require_relative "../lib/test_boosters"
 
-exit(TestBoosters::Boosters::Cucumber.new.run)
+exit(TestBoosters::Boosters::Pytest.new.run)

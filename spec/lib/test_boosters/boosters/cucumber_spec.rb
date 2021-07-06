@@ -50,16 +50,6 @@ describe TestBoosters::Boosters::Cucumber do
     end
   end
 
-  describe "#after_job" do
-    before { ENV.delete("REPORT_PATH") }
-
-    it" uploads insights" do
-      expect(TestBoosters::InsightsUploader).to receive(:upload).with("cucumber", "#{ENV["HOME"]}/cucumber_report.json")
-
-      booster.after_job
-    end
-  end
-
   describe "#split_configuration_path" do
     before { ENV["CUCUMBER_SPLIT_CONFIGURATION_PATH"] = "/tmp/path.txt" }
 

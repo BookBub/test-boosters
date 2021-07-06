@@ -12,10 +12,6 @@ module TestBoosters
         CucumberBoosterConfig::Injection.new(Dir.pwd, report_path).run
       end
 
-      def after_job
-        TestBoosters::InsightsUploader.upload("cucumber", report_path)
-      end
-
       def display_header
         super
 

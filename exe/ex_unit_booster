@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require "test_boosters"
+require_relative "../lib/test_boosters"
 
 exit(TestBoosters::Boosters::ExUnit.new.run)

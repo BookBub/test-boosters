@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/test_collectors"
+
+exit(TestCollectors::Collectors::Junit.new.run)
