@@ -1,5 +1,4 @@
 require "json"
-require "open3"
 require "ox"
 
 module TestCollectors

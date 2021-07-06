@@ -9,7 +9,7 @@ module TestBoosters
       puts command unless options[:silent] == true
 
       with_clean_env do
-        run_command(command)
+        system(command)
       end
 
       signaled    = $?.signaled?
@@ -51,20 +51,5 @@ module TestBoosters
       puts "\n"
     end
 
-    def run_command(command)
-      Open3.popen3(command) do |stdin, out, err, thread|
-        t_out = Thread.new do
-          out.each(&method(:puts))
-        end
-
-        t_err = Thread.new do
-          err.each(&method(:puts))
-        end
-
-        [t_out, t_err].each(&:join)
-
-        return thread.value
-      end
-    end
   end
 end

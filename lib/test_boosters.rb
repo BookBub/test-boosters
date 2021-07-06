@@ -1,5 +1,4 @@
 require "uri"
-require "open3"
 require "optparse"
 require "json"
 
