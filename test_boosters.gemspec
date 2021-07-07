@@ -17,7 +17,6 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "semaphore_cucumber_booster_config", "~> 1.4.1"
   spec.add_runtime_dependency "ox", "~> 2.14"
 
   spec.add_development_dependency "rake", "~> 10.0"
