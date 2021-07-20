@@ -31,6 +31,13 @@ module TestBoosters
         ) do |parameter|
           options.merge!(:dry_run => parameter)
         end
+
+        opts.on(
+          "--quiet-dry-run",
+          "Only print the files that will be run for this job index with no extra information"
+        ) do |parameter|
+          options.merge!(:quiet_dry_run => parameter)
+        end
       end
 
       parser.parse!
