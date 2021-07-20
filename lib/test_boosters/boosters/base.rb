@@ -11,13 +11,19 @@ module TestBoosters
 
       # :reek:TooManyStatements
       def run
-        display_header
+        display_header unless cli_options[:quiet_dry_run]
 
         before_job # execute some activities when the before the job starts
 
-        distribution.display_info
+        distribution.display_info unless cli_options[:quiet_dry_run]
 
         known, leftover = distribution.files_for(job_index)
+
+        if cli_options[:quiet_dry_run]
+          files = known + leftover
+          puts files.join(" ")
+          return 0
+        end
 
         if cli_options[:dry_run]
           show_files_for_dry_run("known", known)
