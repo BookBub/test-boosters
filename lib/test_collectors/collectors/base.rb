@@ -25,7 +25,7 @@ module TestCollectors
           Dir.each_child(Dir.pwd) do |test_job|
             next unless File.directory? File.join(Dir.pwd, test_job)
 
-            number_of_jobs = ENV.fetch("PARALLELISM_#{test_job.upcase}")
+            number_of_jobs = Integer(ENV.fetch("PARALLELISM_#{test_job.upcase}"))
             merged_examples = parse_container_timing_files(test_job)
 
             # sort examples by timing desc
