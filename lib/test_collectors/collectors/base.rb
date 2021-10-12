@@ -25,7 +25,8 @@ module TestCollectors
           Dir.each_child(Dir.pwd) do |test_job|
             next unless File.directory? File.join(Dir.pwd, test_job)
 
-            merged_examples, number_of_jobs = parse_container_timing_files(test_job)
+            number_of_jobs = ENV.fetch("PARALLELISM_#{test_job.upcase}")
+            merged_examples = parse_container_timing_files(test_job)
 
             # sort examples by timing desc
             timing_sets = merged_examples.sort_by {|_, run_time| run_time}.reverse
@@ -41,15 +42,13 @@ module TestCollectors
 
       def parse_container_timing_files(test_job)
         merged_examples = Hash.new(0)
-        number_of_jobs = 0
-
         Dir.chdir(test_job) do
           Dir.each_child(Dir.pwd) do |job_report|
-            number_of_jobs += 1
-              merged_examples = ingest_report(job_report, merged_examples)
+            merged_examples = ingest_report(job_report, merged_examples)
           end
         end
-        return merged_examples, number_of_jobs
+
+        return merged_examples
       end
 
       def harmonic_binpack(number_of_bins, timing_sets, timing_bins: nil)
