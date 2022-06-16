@@ -40,7 +40,7 @@ module TestBoosters
         @valid = false
 
         content = JSON.parse(File.read(@path)).map do |raw_job|
-          files = raw_job.fetch("files").sort
+          files = raw_job.fetch("files").compact.sort
 
           TestBoosters::Files::SplitConfiguration::Job.new(files)
         end

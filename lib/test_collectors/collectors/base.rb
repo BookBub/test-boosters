@@ -83,7 +83,7 @@ module TestCollectors
               end
             end
 
-            timing_bin[:specs] << spec_file
+            timing_bin[:specs] << spec_file unless spec_file.nil?
             timing_bin[:runtime] += spec_timing
           end
 
